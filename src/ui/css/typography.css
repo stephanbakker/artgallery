@@ -1,0 +1,20 @@
+body {
+    font: 12px/160% 'Courier new', serif;
+}
+
+.me {
+    display: inline-block;
+    padding: 5px 0 0 20px;
+    margin: 0;
+    font: 180% 'Courier new', serif;
+}
+
+a {
+    color: #0350b0;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #932B28; 
+    text-decoration: underline;
+}

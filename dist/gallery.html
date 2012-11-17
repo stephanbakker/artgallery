@@ -1,0 +1,63 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Gallery demo</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="ui/css/demo.css" />
+        <script src="ui/js/lib/modernizr.custom.js"></script>
+    </head>
+    <body>
+        <div class="container">
+
+            <h1>Gallery demo</h1>
+            <ul class="gal">
+                <li><a data-description="The man of the house" title="Nicolai" href="http://placekitten.com/1000/800"><img src="http://placekitten.com/100/80" /></a>  </li>
+                <li><a data-description="other kitten" title="Mila" href="http://placekitten.com/1000/900"><img src="http://placekitten.com/80/80" /></a>  </li>
+                <li><a data-description="yet another one!" title="Galina" href="http://placekitten.com/1200/1000"><img src="http://placekitten.com/90/80" /></a>  </li>
+            </ul>
+
+        </div>
+
+    </div>
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+    <script>window.jQuery || document.write('<script src="ui/js/lib/jquery-1.7.2.min.js"><\/script>')</script>
+
+    <script id="galTmpl" type="text/html">
+        <div class="galcont galhidden">
+            <div class="galdim"></div>
+            <div class="galslides">
+                <span class="galslider"></span>
+            </div>
+            <div class="galtopcontrols">
+                <div class="galclose galcontrol" href="#close">Overzicht <span></span></div>
+                <div class="galfullscreen galfullscreen-enter galcontrol" href="#fullscreen">fullscreen <span></span></div>
+            </div>
+            <div class="galnext galcontrol" href="#next"><span>next</span></div>
+            <div class="galprevious galcontrol" href="#previous"><span>previous</span></div>
+        </div>
+    </script>
+    <script id="galImgTmpl" type="text/html">
+        <span class="galslide galpending" id="galimg_$index">
+            <img data-img="$img" />
+            <span class="galloaddim"></span>
+            <span class="galloader"></span>
+            <div class="galcaption">
+                <span class="galindex">$indexof</span>
+                <span class="galinfo">$title, $description</span>
+            </div>
+        </span>
+    </script>
+
+    <script src="ui/js/gallery/collection.js"></script>
+    <script src="ui/js/gallery/create.js"></script>
+    <script src="ui/js/gallery/touch.js"></script>
+    <script src="ui/js/gallery/fullscreen.js"></script>
+    <script src="ui/js/gallery/events.js"></script>
+    <script src="ui/js/gallery/gallery.js"></script>
+    <script>
+        gallery.init('galTmpl', 'galImgTmpl');
+    </script>
+</body>
+</html>
