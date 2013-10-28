@@ -4,21 +4,15 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
 
-        // source directory for copying
-        staging: 'src',
-
-        // copy files to
-        output: 'dist',
-
-        exclude : '.git* grunt.js',
+        pkg : grunt.file.readJSON('package.json'),
 
 
-        lint: {
-            files: ['src/ui/js/*.js', 'src/ui/js/gallery/*.js']
-        },
-
-        css : {
-            'dist/ui/css/gallery.min.css' : ['src/ui/css/base.css', 'src/ui/css/typography.css', 'src/ui/css/gallery.css']
+        cssmin : {
+            combine : {
+                files : {
+                    'dist/ui/css/gallery.min.css' : ['src/ui/css/base.css', 'src/ui/css/typography.css', 'src/ui/css/gallery.css']
+                }
+            }
         },
 
         concat: {
@@ -28,14 +22,16 @@ module.exports = function(grunt) {
             }
         },
 
-        min: {
+        uglify: {
             dist: {
-                src: ['dist/ui/js/gallery.all.js'],
-                dest: 'dist/ui/js/gallery.min.js'
+                files: {
+                    'dist/ui/js/gallery.min.js' : ['dist/ui/js/gallery.all.js']
+                }
             }
         },
 
         jshint: {
+            files: ['src/ui/js/*.js', 'src/ui/js/gallery/*.js']
             options: {
                 curly: true,
                 eqeqeq: true,
@@ -58,7 +54,13 @@ module.exports = function(grunt) {
         uglify: {},
     });
 
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+
+
     // Default task.
     //grunt.registerTask('default', 'lint qunit concat min');
-    grunt.registerTask('default', 'copy lint concat css min');
+    grunt.registerTask('default', 'jshint concat uglify cssmin');
 };
