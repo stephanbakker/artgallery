@@ -31,7 +31,7 @@ module.exports = function(grunt) {
         },
 
         jshint: {
-            files: ['src/ui/js/*.js', 'src/ui/js/gallery/*.js']
+            files: ['src/ui/js/*.js', 'src/ui/js/gallery/*.js'],
             options: {
                 curly: true,
                 eqeqeq: true,
@@ -50,8 +50,8 @@ module.exports = function(grunt) {
             globals: {
                 jQuery: true
             }
-        },
-        uglify: {},
+        }
+        
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -62,5 +62,5 @@ module.exports = function(grunt) {
 
     // Default task.
     //grunt.registerTask('default', 'lint qunit concat min');
-    grunt.registerTask('default', 'jshint concat uglify cssmin');
+    grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'cssmin']);
 };
