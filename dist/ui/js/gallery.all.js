@@ -267,6 +267,8 @@ var gallery = (function (gal) {
                 return function (posX) {
                     gal.$slides[0].style.MozTransform =
                         gal.$slides[0].style.webkitTransform =
+                        gal.$slides[0].style.msTransform =
+                        gal.$slides[0].style.transform =
                         'translate3d(' + posX + 'px, 0, 0)';
                     gal.curpos = posX;
                 };
